@@ -28,7 +28,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
 GH_TAGNAME=	5bd9be1
 
-USE_GNOME=	cairo dconf gdkpixbuf2 gtk30 intltool pygobject3
+USE_GNOME=	cairo dconf gdkpixbuf gtk30 intltool pygobject3
 GLIB_SCHEMAS=	x.dm.slick-greeter.gschema.xml
 USE_XORG=	pixman x11 xext
 

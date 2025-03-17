@@ -15,7 +15,7 @@ LIB_DEPENDS=	libdbusmenu-gtk3.so:devel/libdbusmenu
 USES=		gettext-tools gnome meson pkgconfig python shebangfix vala:build xorg
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
-USE_GNOME=	cairo gdkpixbuf2 glib20 gtk-update-icon-cache gtk30 \
+USE_GNOME=	cairo gdkpixbuf glib20 gtk-update-icon-cache gtk30 \
 		intltool introspection:build libgnomekbd pygobject3
 GLIB_SCHEMAS=	org.x.apps.gschema.xml
 USE_LDCONFIG=	yes

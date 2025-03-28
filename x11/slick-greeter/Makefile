@@ -9,38 +9,37 @@ WWW=		https://github.com/linuxmint/slick-greeter
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-LIB_DEPENDS=	libcanberra-gtk3.so:audio/libcanberra-gtk3 \
-		libcanberra.so:audio/libcanberra \
+LIB_DEPENDS=	libcanberra.so:audio/libcanberra \
 		libfreetype.so:print/freetype2 \
 		libharfbuzz.so:print/harfbuzz \
 		liblightdm-gobject-1.so:x11/lightdm \
-		libxapp.so:x11/xapp \
+		libxapp.so:x11/xapp
 
-RUN_DEPENDS=	numlockx>=0:x11/numlockx \
-		setxkbmap:x11/setxkbmap \
-		xinput:x11/xinput
+RUN_DEPENDS=	numlockx>=0:x11/numlockx
 
 USES=		autoreconf gettext gmake gnome localbase pkgconfig python:run shebangfix \
 		vala:build xorg
-USE_GNOME=	cairo dconf gdkpixbuf gtk30 intltool pygobject3
+USE_GNOME=	cairo gdkpixbuf gtk30 intltool pygobject3
 
 USE_XORG=	pixman x11 xext
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
-GH_TAGNAME=	640a595
 
 GNU_CONFIGURE=	yes
 
 SHEBANG_FILES=	files/usr/bin/slick-greeter-check-hidpi \
-		files/usr/bin/slick-greeter-enable-tap-to-click \
 		files/usr/bin/slick-greeter-set-keyboard-layout \
+		files/usr/bin/slick-greeter-enable-tap-to-click \
 		makepot
 bash_OLD_CMD=	/usr/bin/bash
 bash_CMD=	/bin/sh
 SUB_FILES=	pkg-deinstall pkg-install
 
 GLIB_SCHEMAS=	x.dm.slick-greeter.gschema.xml
+
+OPTIONS_DEFINE=	NLS
+OPTIONS_SUB=	yes
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|"/usr|"${PREFIX}|g' \

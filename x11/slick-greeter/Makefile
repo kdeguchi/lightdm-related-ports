@@ -1,6 +1,5 @@
 PORTNAME=	slick-greeter
-PORTVERSION=	2.0.3
-PORTREVISION=	1
+PORTVERSION=	2.0.9
 CATEGORIES=	x11
 
 MAINTAINER=	ericbsd@FreeBSD.org
@@ -23,26 +22,25 @@ RUN_DEPENDS=	numlockx>=0:x11/numlockx \
 
 USES=		autoreconf gettext gmake gnome localbase pkgconfig python:run shebangfix \
 		vala:build xorg
+USE_GNOME=	cairo dconf gdkpixbuf gtk30 intltool pygobject3
+
+USE_XORG=	pixman x11 xext
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
-GH_TAGNAME=	5bd9be1
+GH_TAGNAME=	640a595
 
-USE_GNOME=	cairo dconf gdkpixbuf gtk30 intltool pygobject3
-GLIB_SCHEMAS=	x.dm.slick-greeter.gschema.xml
-USE_XORG=	pixman x11 xext
+GNU_CONFIGURE=	yes
 
 SHEBANG_FILES=	files/usr/bin/slick-greeter-check-hidpi \
 		files/usr/bin/slick-greeter-enable-tap-to-click \
 		files/usr/bin/slick-greeter-set-keyboard-layout \
 		makepot
-
 bash_OLD_CMD=	/usr/bin/bash
 bash_CMD=	/bin/sh
-
-GNU_CONFIGURE=	yes
-
 SUB_FILES=	pkg-deinstall pkg-install
+
+GLIB_SCHEMAS=	x.dm.slick-greeter.gschema.xml
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|"/usr|"${PREFIX}|g' \
